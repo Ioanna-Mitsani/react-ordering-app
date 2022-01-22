@@ -1,17 +1,24 @@
-import React from 'react';
-import Footer from '../shared/Footer';
-import Header from '../shared/Header';
+import React from "react";
+import StoreCard from "../components/StoreCard";
+import Footer from "../shared/Footer";
+import Header from "../shared/Header";
+import Home from "../views/Home";
+import StoreList from "../components/StoreList";
 
-import './Layout.css';
+import "./Layout.css";
 
-function Layout({children}) {
+function Layout() {
   return (
     <>
-    <Header/>
-      {children}
-    <Footer className="footer"/>
+      <Header />
+      <main className="main">
+        <StoreList />
+      </main>
+      <div className="footer">
+        <Footer />
+      </div>
     </>
-    );
+  );
 }
 
 export default Layout;
