@@ -1,22 +1,19 @@
-import { useState, useEffect } from "react";
-
 import React from "react";
 import StoreCard from "./StoreCard";
 
+import { useData } from "../hooks/useData";
+
 import "./StoreList.scoped.css";
 function StoreList() {
-  const [stores, setStores] = useState([]);
+  const stores = useData("http://localhost:8000/stores", []);
 
-  useEffect(() => {
-    fetch("http://localhost:8000/stores")
-      .then((response) => response.json())
-      .then((data) => setStores(data));
-  }, []);
-
+  console.log(stores);
   return stores.map((store) => (
-    <li className="storelist" key={store.id}>
-      <StoreCard store={store} />
-    </li>
+    <ul className="storelist">
+      <li className="storecard" key={store.id}>
+        <StoreCard store={store} />
+      </li>
+    </ul>
   ));
 }
 

@@ -8,7 +8,9 @@ import { CardActionArea } from "@mui/material";
 export default function StoreCard({ store }) {
   return (
     <Card sx={{ maxWidth: 345 }}>
-      <CardActionArea>
+      <CardActionArea
+        onClick={() => localStorage.setItem("store_id", store.id)}
+      >
         <CardMedia
           component="img"
           height="140"

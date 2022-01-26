@@ -1,25 +1,34 @@
 import { TextField, Button } from "@mui/material";
 import React from "react";
-import { useState } from "react";
+import { useInput } from "../hooks/useInput";
 
+const style = {
+  locationField: {
+    marginTop: "1em",
+  },
+  locationButton: {
+    marginTop: "1.5em",
+  },
+};
 function Location() {
-  const [address, setAddress] = useState("");
+  const [addressProps, resetAddress] = useInput("");
 
-  const storeAddress = (event) => {
+  const submit = (event) => {
     event.preventDefault();
-    console.log({ address });
+    localStorage.setItem("address", addressProps.value);
+    resetAddress();
   };
 
   return (
-    <form onSubmit={storeAddress()}>
+    <form className="location" action="/" onSubmit={submit}>
       <TextField
+        {...addressProps}
+        style={style.locationField}
         label="Enter your address"
         placeholder="123 Main St, New York, NY"
         variant="outlined"
-        value={address}
-        onInput={(e) => setAddress(e.target.value)}
       />
-      <Button variant="contained" type="submit">
+      <Button style={style.locationButton} variant="contained" type="submit">
         Order Now
       </Button>
     </form>
