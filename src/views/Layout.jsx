@@ -1,17 +1,16 @@
-import React from "react";
-import Header from "../components/shared/Header";
-import TestProducts from "../components/TestProducts";
-import Store from "./Store";
-import StoreInfo from "../components/StoreInfo";
-import "./reset.css";
-import "./Layout.css";
-
+import React from 'react';
+import Header from '../components/shared/Header';
+import './reset.css';
+import './Layout.css';
+import Stores from './Stores';
+import Store from './Store';
+import Cart from './Cart';
 function Layout() {
   return (
     <>
       <Header />
       <main className="main">
-        <Store />
+        <Cart />
       </main>
     </>
   );

@@ -1,10 +1,10 @@
-import { Typography } from "@mui/material";
-import React from "react";
-import { useData } from "../hooks/useData";
-import Product from "./Product";
+import { Typography } from '@mui/material';
+import React from 'react';
+import { useData } from '../hooks/useData';
+import Product from './Product';
 
 function ProductList() {
-  const id = localStorage.getItem("store_id");
+  const id = localStorage.getItem('store_id');
   const { data, loading, error } = useData(
     `http://localhost:8000/stores/${id}/products`,
     []

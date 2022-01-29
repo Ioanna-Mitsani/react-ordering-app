@@ -1,11 +1,11 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useLayoutEffect } from "react";
 
-export const useData = (url, initialValue) => {
+export const useTestData = (url, initialValue) => {
   const [data, setData] = useState(initialValue);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     setLoading(true);
     setError(null);
 

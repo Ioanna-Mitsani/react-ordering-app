@@ -1,12 +1,40 @@
-import { Paper, Typography } from "@mui/material";
-import React from "react";
+import { CardActionArea, Paper, Typography } from '@mui/material';
+import { EURO } from '../helpers/currency';
+import { useState } from 'react';
+import ProductModal from './ProductModal';
+import { useProductModal } from '../hooks/useProductModal';
 
 function Product({ product }) {
+  const {
+    open,
+    handleClickOpen,
+    handleClose,
+    handleClickAdd,
+    handleClickSub,
+    quantity,
+  } = useProductModal();
   return (
-    <Paper elevation={3}>
-      <Typography variant="body1">{product.title}</Typography>
-      <Typography variant="caption">{product.desc}</Typography>
-      <Typography variant="body2">{product.price}0 €</Typography>
+    <Paper elevation={0}>
+      <CardActionArea onClick={handleClickOpen}>
+        <Typography variant="body1">
+          {product.title.toLowerCase().charAt(0).toUpperCase() +
+            product.title.slice(1)}
+        </Typography>
+        <Typography variant="caption">
+          {product.desc.toLowerCase().charAt(0).toUpperCase() +
+            product.desc.slice(1)}
+        </Typography>
+        <Typography variant="body2">{EURO(product.price).format()}</Typography>
+      </CardActionArea>
+      <ProductModal
+        product={product}
+        open={open}
+        handleClose={handleClose}
+        handleClickAdd={handleClickAdd}
+        handleClickOpen={handleClickOpen}
+        handleClickSub={handleClickSub}
+        quantity={quantity}
+      />
     </Paper>
   );
 }
