@@ -1,16 +1,22 @@
-import React from "react";
-import { Chip } from "@mui/material";
+import React from 'react';
+import { Chip } from '@mui/material';
+import { useStores } from '../providers/StoresProvider';
 
-function Filters({ stores }) {
-  const filter = (category) => {
-    stores.filter((store) => store.categories.includes(category));
-  };
+function Filters() {
+  const { stores, filterStores, filteredStores } = useStores();
 
   return (
     <div>
       {stores.map((store) =>
         store.categories.map((category) => (
-          <Chip label={category} onClick={filter} />
+          <Chip
+            label={category}
+            onClick={() => {
+              stores.filter((store) =>
+                store.categories.find((category) => category === 'coffee')
+              );
+            }}
+          />
         ))
       )}
     </div>

@@ -1,22 +1,27 @@
-import { TextField, Button } from "@mui/material";
-import React from "react";
-import { useInput } from "../hooks/useInput";
+import { TextField, Button } from '@mui/material';
+import React from 'react';
+import { useInput } from '../hooks/useInput';
+import { useNavigate } from 'react-router-dom';
 
 const style = {
   locationField: {
-    marginTop: "1em",
+    marginTop: '1em',
   },
   locationButton: {
-    marginTop: "1.5em",
+    marginTop: '1.5em',
+    color: 'white',
+    backgroundColor: 'orangered',
   },
 };
 function Location() {
-  const [addressProps, resetAddress] = useInput("");
+  const [addressProps, resetAddress] = useInput('');
+  const navigate = useNavigate();
 
   const submit = (event) => {
     event.preventDefault();
-    localStorage.setItem("address", addressProps.value);
+    localStorage.setItem('address', addressProps.value);
     resetAddress();
+    navigate('/stores');
   };
 
   return (

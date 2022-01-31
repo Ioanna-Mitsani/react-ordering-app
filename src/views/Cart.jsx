@@ -4,16 +4,15 @@ import { Button, Paper, Typography, Box, IconButton } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import './Cart.scoped.css';
-import StoreInfo from '../components/StoreInfo';
 import { EURO } from '../helpers/currency';
 
 function Cart() {
   const { cart, addToCart, removeFromCart, clearCart, cartItems, cartTotal } =
     useCart();
+
   return (
     <div className="store">
       <Typography variant="h6">My cart</Typography>
-      <StoreInfo />
       <Paper elevation={1} className="paper-categories">
         <ul className="category-list">
           {cart.map((item) => (
@@ -40,6 +39,9 @@ function Cart() {
                   padding: '0.5em',
                 }}
               >
+                <Typography sx={{ mr: '3em' }}>
+                  {EURO(item.product.price).format()}
+                </Typography>
                 <IconButton
                   autoFocus
                   onClick={() => {
@@ -51,7 +53,9 @@ function Cart() {
                 <Typography variant="body1">{item.quantity}</Typography>
                 <IconButton
                   autoFocus
-                  onClick={() => addToCart(item.product, 1)}
+                  onClick={() => {
+                    addToCart(item.product, 1);
+                  }}
                 >
                   <AddIcon />
                 </IconButton>

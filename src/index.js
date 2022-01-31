@@ -4,13 +4,16 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import CartProvider from './providers/CartProvider';
+import StoresProvider from './providers/StoresProvider';
 import { BrowserRouter } from 'react-router-dom';
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <CartProvider>
-        <App />
+        <StoresProvider>
+          <App />
+        </StoresProvider>
       </CartProvider>
     </BrowserRouter>
   </React.StrictMode>,

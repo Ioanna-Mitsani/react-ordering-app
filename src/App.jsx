@@ -5,6 +5,7 @@ import Home from './views/Home';
 import Stores from './views/Stores';
 import Store from './views/Store';
 import Cart from './views/Cart';
+import Page404 from './views/Page404';
 
 function App() {
   return (
@@ -13,8 +14,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/stores" element={<Stores />} />
-        <Route path="/store/:id" element={<Store />} />
-        <Route path="/cart" element={<Cart />} />
+        <Route path="/:id" element={<Store />} />
+        <Route path="/checkout" element={<Cart />} />
+        <Route path="*" element={<Page404 />} />
       </Routes>
     </div>
   );

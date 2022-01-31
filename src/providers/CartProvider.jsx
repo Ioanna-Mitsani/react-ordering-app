@@ -10,8 +10,6 @@ function CartProvider({ children }) {
   const [cartTotal, setCartTotal] = useLocalStorageState('total', 0);
   const [cartItems, setCartItems] = useLocalStorageState('items', 0);
 
-  const store = localStorage.getItem('store_id');
-
   function addToCart(product, quantity) {
     const newCart = [...cart];
     const existingProduct = newCart.find(

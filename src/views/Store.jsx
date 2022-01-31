@@ -8,9 +8,9 @@ import './Store.scoped.css';
 import ProductModal from '../components/ProductModal';
 import { useCart } from '../providers/CartProvider';
 import CartSnackbar from '../components/CartSnackbar';
-
+import { useParams } from 'react-router-dom';
 function Store() {
-  const id = localStorage.getItem('store_id');
+  const { id } = useParams();
   const { data, loading, error } = useData(
     `http://localhost:8000/stores/${id}/products`,
     []
@@ -29,7 +29,7 @@ function Store() {
   } else {
     return (
       <div className="store">
-        <StoreInfo />
+        <StoreInfo id={id} />
         <Paper elevation={1} className="paper-categories">
           <ul className="category-list">
             {categories.map((category) => (

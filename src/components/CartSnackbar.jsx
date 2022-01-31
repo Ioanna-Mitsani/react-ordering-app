@@ -3,16 +3,16 @@ import Button from '@mui/material/Button';
 import Snackbar from '@mui/material/Snackbar';
 import { useCart } from '../providers/CartProvider';
 import { EURO } from '../helpers/currency';
-
+import { useNavigate } from 'react-router-dom';
 export default function CartSnackbar() {
   const { cart, cartTotal, cartItems } = useCart();
-
+  const navigate = useNavigate();
   const action = (
     <>
       <Button
         sx={{ color: 'orangered' }}
         size="small"
-        onClick={console.log('close button')}
+        onClick={() => navigate('/checkout')}
       >
         CHECKOUT
       </Button>
