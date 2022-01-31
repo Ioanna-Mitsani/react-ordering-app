@@ -7,8 +7,7 @@ import './Cart.scoped.css';
 import { EURO } from '../helpers/currency';
 
 function Cart() {
-  const { cart, addToCart, removeFromCart, clearCart, cartItems, cartTotal } =
-    useCart();
+  const { cart, addToCart, removeFromCart, clearCart, cartTotal } = useCart();
 
   return (
     <div className="store">
